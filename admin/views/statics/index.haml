@@ -1,0 +1,35 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:statics, :index)
+      %li=link_to pat(:new), url(:statics, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:statics)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:static, :title)
+          %th=mat(:static, :path)
+          %th=mat(:static, :body)
+          %th=mat(:static, :tags)
+          %th=mat(:static, :created_at)
+          %th=mat(:static, :updated_at)
+          %th.last="&nbsp;"
+        -@statics.each do |static|
+          %tr
+            %td.first=static.title
+            %td=static.path
+            %td=static.body
+            %td=static.tags
+            %td=static.created_at
+            %td=static.updated_at
+            %td.last
+              =button_to pat(:edit), url(:statics, :edit, :id => static.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:statics, :destroy, :id => static.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")
