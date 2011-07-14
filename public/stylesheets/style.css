@@ -82,37 +82,6 @@ a:hover { color: #036; }
  */
 
 
-body {
-  font-size: 14px;
-  width: 1024px;
-  margin: 0px auto;
-}
-
-h1 {
-  font-size: 244%;
-  margin: 18px 0 18px 0;
-}
-
-h2 {
-  font-size: 166%;
-  margin: 18px 0 18px 0;
-}
-
-nav ul li {
-  display: inline;
-  padding: 2px 9px 0 0;
-}
-
-nav ul li a {
-  text-decoration: none;
-}
-
-footer {
-  font-size: 66%;
-  margin: 18px 0;
-}
-
-
 
 
 
