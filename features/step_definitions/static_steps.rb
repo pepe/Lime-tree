@@ -63,3 +63,15 @@ When /^click tagged page title in menu$/ do
   click_link 'Nice page'
 end
 
+Then /^I should see index page title$/ do
+  page.should have_content('Home page')
+end
+
+Given /^I created configuration page$/ do
+  Static.create(title: 'Nice website', path: 'configuration',
+                tags: ['configuration'])
+end
+
+Then /^I should see configuration page title$/ do
+  page.should have_content('Nice website')
+end

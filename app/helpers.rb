@@ -12,4 +12,8 @@ LimeTree.helpers do
       content_tag(:li, link_to(page.title, url(:pages, path: page.path)))
     end.join('')
   end
+
+  def load_configuration
+    @configuration = Static.tagged_with('configuration').first
+  end
 end
