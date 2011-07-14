@@ -33,4 +33,13 @@ describe "Static Model" do
       Static.tagged_with('in_menu').first.should == static
     end
   end
+  context "with parts" do
+    it "returns body as parsed yaml" do
+      static.body = "footer:\n  Text"
+      static.parts['footer'].should == 'Text'
+    end
+    it "returns empty parts when no body" do
+      static.parts['footer'].should be_empty
+    end
+  end
 end

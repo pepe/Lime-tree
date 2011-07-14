@@ -75,3 +75,16 @@ end
 Then /^I should see configuration page title$/ do
   page.should have_content('Nice website')
 end
+
+Given /^I created configuration page with footer$/ do
+  Static.create(title: 'Nice website', path: 'configuration',
+                tags: ['configuration'], body: "footer:\n  Footer text")
+end
+
+Then /^I should see footer text$/ do
+  within('footer') do
+    page.should have_content('Footer text')
+  end
+end
+
+

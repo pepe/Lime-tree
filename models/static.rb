@@ -9,4 +9,8 @@ class Static
   timestamps!
 
   scope :tagged_with, ->(tag) {where(tags: {:$all => [tag]})}
+
+  def parts
+    @parts ||= body ? YAML::load(body) : ''
+  end
 end

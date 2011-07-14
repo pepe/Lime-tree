@@ -7,11 +7,12 @@
       =@configuration.title if @configuration
       -
       = @title
+    %link(rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="all")
   %body
     #container
       %header
+        %h1=@configuration.title if @configuration
         %nav#menu
-          %h1=@configuration.title if @configuration
           %ul=menu_items
 
       #main(role='main')
@@ -19,3 +20,4 @@
         =yield
 
       %footer
+        =@configuration.parts['footer'] if @configuration
