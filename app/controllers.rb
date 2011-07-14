@@ -1,8 +1,11 @@
 LimeTree.controllers  do
+  get :root, map: '/' do
+    get_static
+    render 'page'
+  end
+
   get :pages, map: '/', with: :path do
-    static = Static.where(path: params[:path]).first
-    @title = static.title
-    @body = static.body
+    get_static('')
     render 'page'
   end
 

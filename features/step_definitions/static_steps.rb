@@ -40,3 +40,15 @@ Then /^should see its title and body$/ do
   page.should have_content('Nice page indeed. Hello there')
 end
 
+Given /^I created static index page$/ do
+  Static.create(title: 'Home page', path: '', body: 'Home sweet home.')
+end
+
+When /^I go to web root$/ do
+  visit '/'
+end
+
+Then /^I should see I am at home sweet home$/ do
+  page.should have_content('Home page')
+  page.should have_content('Home sweet home.')
+end
