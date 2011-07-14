@@ -10,12 +10,18 @@ features which describes all functions.
 ## Instalation
 
 Clone this repo and install bundle:
+
     git clone git://github.com/pepe/Lime-tree.git
     bundle install
+
 Then add admin user:
+
     bundle exec padrino rake seed
+
 Boot Padrino:
+
     bundle exec padrino start
+
 and go to [Admin address](http://localhost:3000/admin) and start creating
 pages.
 
