@@ -1,8 +1,8 @@
 Given /^I am in statics administation$/ do
-  account = Account.make(:admin)
+  account = Account.create(email: 'admin@example.com', password: 'master', password_confirmation: 'master')
   visit '/admin'
-  fill_in 'Email', with: account.email
-  fill_in 'Password', with: account.password
+  fill_in 'Email', with: 'admin@example.com'
+  fill_in 'Password', with: 'master'
   click_button 'Login'
   click_link 'Statics'
 end

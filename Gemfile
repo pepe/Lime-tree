@@ -12,15 +12,13 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'sass'
 gem 'haml'
 gem 'mongo_mapper'
-gem 'bson_ext', :require => "mongo"
+gem 'bson_ext', require: "mongo"
 
 # Test requirements
-gem 'rspec', :group => "test"
-gem 'capybara', :group => "test"
-gem 'cucumber', :group => "test"
-gem 'rack-test', :require => "rack/test", :group => "test"
-gem 'machinist', :group => 'test'
-gem 'machinist_mongo', :require => 'machinist/mongo_mapper', :group => 'test'
+gem 'rspec', group: "test"
+gem 'capybara', group: "test"
+gem 'cucumber', group: "test"
+gem 'rack-test', require: "rack/test", group: "test"
 
 
 
