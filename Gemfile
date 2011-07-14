@@ -1,7 +1,7 @@
 source :rubygems
 
 # Server requirements
-# gem 'thin' or mongrel
+gem 'thin' or mongrel
 
 # Project requirements
 gem 'rake'
