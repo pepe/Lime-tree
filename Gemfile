@@ -18,6 +18,9 @@ gem 'rspec', :group => "test"
 gem 'capybara', :group => "test"
 gem 'cucumber', :group => "test"
 gem 'rack-test', :require => "rack/test", :group => "test"
+gem 'machinist', :group => 'test'
+gem 'machinist_mongo', :require => 'machinist/mongomapper', :group => 'test'
+
 
 
 # Padrino
