@@ -87,4 +87,11 @@ Then /^I should see footer text$/ do
   end
 end
 
+Given /^I created static page with body in markdown$/ do
+  Static.create(title: 'Nice page', path: 'nice',
+                body: "Nice page indeed.\n\nHello there.")
+end
 
+Then /^I should see its body formated$/ do
+  page.should have_xpath("//html/body/div/div/p[2]")
+end

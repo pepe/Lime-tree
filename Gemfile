@@ -13,6 +13,7 @@ gem 'sass'
 gem 'haml'
 gem 'mongo_mapper'
 gem 'bson_ext', require: "mongo"
+gem 'redcarpet'
 
 # Test requirements
 gem 'rspec', group: "test"

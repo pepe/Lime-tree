@@ -16,4 +16,8 @@ LimeTree.helpers do
   def load_configuration
     @configuration = Static.tagged_with('configuration').first
   end
+
+  def format(text)
+    Redcarpet.new(text).to_html
+  end
 end
