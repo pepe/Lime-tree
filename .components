@@ -1,0 +1,7 @@
+--- 
+:orm: mongomapper
+:test: cucumber
+:mock: none
+:script: jquery
+:renderer: haml
+:stylesheet: scss
