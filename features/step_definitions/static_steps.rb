@@ -28,14 +28,15 @@ When /^I go to create one$/ do
 end
 
 Given /^I created static page$/ do
-  Static.create(title: 'Nice page', path: 'nice', body: 'Nice page indeed. Hello there.')
+  Static.create(title: 'Nice page', path: 'nice',
+                body: 'Nice page indeed. Hello there.')
 end
 
 When /^I go to its path$/ do
   visit '/nice'
 end
 
-Then /^should see its title and body$/ do
+Then /^I should see its title and body$/ do
   page.should have_content('Nice page')
   page.should have_content('Nice page indeed. Hello there')
 end
@@ -52,3 +53,13 @@ Then /^I should see I am at home sweet home$/ do
   page.should have_content('Home page')
   page.should have_content('Home sweet home.')
 end
+
+Given /^I created page and tagged it to be in menu$/ do
+  Static.create(title: 'Nice page', path: 'nice',
+                body: 'Nice page indeed. Hello there.', tags: ['in_menu'])
+end
+
+When /^click tagged page title in menu$/ do
+  click_link 'Nice page'
+end
+

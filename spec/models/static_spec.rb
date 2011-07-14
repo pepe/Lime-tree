@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe "Static Model" do
+  before do
+    Static.delete_all
+  end
   let(:static) { Static.new }
   it 'can be created' do
     static.should_not be_nil
@@ -21,6 +24,13 @@ describe "Static Model" do
     it "has tags" do
       static.tags = %w(some tags)
       static.tags.should == %w(some tags)
+    end
+  end
+  context "when queried" do
+    it "returns all tagged with some tag" do
+      static.tags = ['in_menu']
+      static.save
+      Static.tagged_with('in_menu').first.should == static
     end
   end
 end

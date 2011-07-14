@@ -5,8 +5,7 @@ LimeTree.controllers  do
   end
 
   get :pages, map: '/', with: :path do
-    get_static('')
+    get_static(params[:path])
     render 'page'
   end
-
 end

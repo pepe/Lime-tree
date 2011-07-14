@@ -12,5 +12,5 @@ Feature: Create static page
   Scenario: Seeing created static
     Given I created static page
     When I go to its path
-    Then should see its title and body
+    Then I should see its title and body
 

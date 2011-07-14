@@ -7,4 +7,6 @@ class Static
   key :tags, Array
 
   timestamps!
+
+  scope :tagged_with, ->(tag) {where(tags: {:$all => [tag]})}
 end
