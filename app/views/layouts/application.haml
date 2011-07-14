@@ -1,0 +1,15 @@
+!!! 5
+%html
+  %head
+    %meta(charset="UTF-8")
+    %meta(name="viewport" content="width=1024")
+    %title= @title
+  %body
+    #container
+      %header
+        %h1=@title
+
+      #main(role='main')
+        =yield
+
+      %footer

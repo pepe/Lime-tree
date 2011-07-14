@@ -1,3 +1,7 @@
+Before do
+  Account.delete_all
+  Static.delete_all
+end
 Given /^I am in statics administation$/ do
   Account.create(email: 'admin@example.com', password: 'master',
                  password_confirmation: 'master', role: 'admin')
@@ -10,7 +14,7 @@ end
 
 When /^I fill in statics details and save it$/ do
   fill_in 'Title', with: 'Home page'
-  fill_in 'Path', with: '/'
+  fill_in 'Path', with: 'home'
   fill_in 'Body', with: 'Hello world!'
   click_button 'Save'
 end
@@ -24,7 +28,7 @@ When /^I go to create one$/ do
 end
 
 Given /^I created static page$/ do
-  Static.create(title: 'Nice page', path: '/nice', body: 'Nice page indeed. Hello there.')
+  Static.create(title: 'Nice page', path: 'nice', body: 'Nice page indeed. Hello there.')
 end
 
 When /^I go to its path$/ do
