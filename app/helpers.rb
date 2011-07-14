@@ -8,8 +8,8 @@ LimeTree.helpers do
   end
 
   def menu_items
-    Static.tagged_with('in_menu').map do |page|
-      content_tag(:li, link_to(page.title, url(:pages, path: page.path)))
+    Static.for_menu.map do |page|
+      content_tag(:li, link_to(page.title, url(:pages, path: page.path), :unless => :current))
     end.join('')
   end
 

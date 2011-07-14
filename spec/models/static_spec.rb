@@ -28,9 +28,15 @@ describe "Static Model" do
   end
   context "when queried" do
     it "returns all tagged with some tag" do
-      static.tags = ['in_menu']
+      static.tags = ['configuration']
       static.save
-      Static.tagged_with('in_menu').first.should == static
+      Static.tagged_with('configuration').first.should == static
+    end
+    it "returns only path and title for menu" do
+      static.tags = ['in_menu']
+      static.body = 'Some body'
+      static.save
+      Static.for_menu.first.body.should be_nil
     end
   end
   context "with parts" do
