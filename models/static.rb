@@ -13,4 +13,13 @@ class Static
   def parts
     @parts ||= body ? YAML::load(body) : ''
   end
+
+  def text_tags
+    @text_tags ||= tags.join(';')
+  end
+
+  def text_tags=(text)
+    @text_tags = text
+    self.tags = text.split(';')
+  end
 end

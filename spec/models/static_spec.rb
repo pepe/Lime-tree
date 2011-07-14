@@ -39,7 +39,17 @@ describe "Static Model" do
       static.parts['footer'].should == 'Text'
     end
     it "returns empty parts when no body" do
-      static.parts['footer'].should be_empty
+      static.parts['footer'].should be_nil
+    end
+  end
+  context "when tagged" do
+    it "returns tags joined by semicolon" do
+      static.tags = ['in_menu', 'hot']
+      static.text_tags.should == 'in_menu;hot'
+    end
+    it "parses text tags to array" do
+      static.text_tags = 'in_menu;hot'
+      static.tags.should == ['in_menu', 'hot']
     end
   end
 end
