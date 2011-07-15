@@ -25,6 +25,13 @@ describe "Static Model" do
       static.tags = %w(some tags)
       static.tags.should == %w(some tags)
     end
+    it "has weight" do
+      static.weight = 1
+      static.weight.should == 1
+    end
+    it "has zero default weight" do
+      static.weight.should == 0
+    end
   end
   context "when queried" do
     it "returns all tagged with some tag" do
@@ -32,11 +39,21 @@ describe "Static Model" do
       static.save
       Static.tagged_with('configuration').first.should == static
     end
-    it "returns only path and title for menu" do
-      static.tags = ['in_menu']
-      static.body = 'Some body'
-      static.save
-      Static.for_menu.first.body.should be_nil
+    context "for menu" do
+      before do
+        static.tags = ['in_menu']
+      end
+      it "returns only path and title" do
+        static.body = 'Some body'
+        static.save
+        Static.for_menu.first.body.should be_nil
+      end
+      it "returns sorted by weight" do
+        Static.create(title: 'Some', path: 'some', weight: 900, tags:['in_menu'])
+        static.weight = 999
+        static.save
+        Static.for_menu.first.should == static
+      end
     end
   end
   context "with parts" do

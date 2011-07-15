@@ -27,11 +27,6 @@ When /^I go to create one$/ do
   click_link 'New'
 end
 
-Given /^I created static page$/ do
-  Static.create(title: 'Nice page', path: 'nice',
-                body: 'Nice page indeed. Hello there.')
-end
-
 When /^I go to its path$/ do
   visit '/nice'
 end
@@ -41,22 +36,12 @@ Then /^I should see its title and body$/ do
   page.should have_content('Nice page indeed. Hello there')
 end
 
-Given /^I created static index page$/ do
-  Static.create(title: 'Home page', path: '', body: 'Home sweet home.')
-end
-
 When /^I go to web root$/ do
   visit '/'
 end
 
 Then /^I should see I am at home sweet home$/ do
-  page.should have_content('Home page')
   page.should have_content('Home sweet home.')
-end
-
-Given /^I created page and tagged it to be in menu$/ do
-  Static.create(title: 'Nice page', path: 'nice',
-                body: 'Nice page indeed. Hello there.', tags: ['in_menu'])
 end
 
 When /^click tagged page title in menu$/ do
@@ -67,18 +52,8 @@ Then /^I should see index page title$/ do
   page.should have_content('Home page')
 end
 
-Given /^I created configuration page$/ do
-  Static.create(title: 'Nice website', path: 'configuration',
-                tags: ['configuration'])
-end
-
 Then /^I should see configuration page title$/ do
   page.should have_content('Nice website')
-end
-
-Given /^I created configuration page with footer$/ do
-  Static.create(title: 'Nice website', path: 'configuration',
-                tags: ['configuration'], body: "footer:\n  Footer text")
 end
 
 Then /^I should see footer text$/ do
@@ -87,21 +62,15 @@ Then /^I should see footer text$/ do
   end
 end
 
-Given /^I created static page with body in markdown$/ do
-  Static.create(title: 'Nice page', path: 'nice',
-                body: "Nice page indeed.\n\nHello there.")
-end
-
 Then /^I should see its body formated$/ do
-  page.should have_xpath("//html/body/div/div/p[2]")
-end
-
-Given /^I created side information page for it$/ do
-  Static.create(title: 'Nice page side info', path: 'nice_side',
-                body: 'There are some overflow from nice page.')
+  page.should have_xpath("//html/body/div/div/div/p[2]")
 end
 
 Then /^I should see side information title and body$/ do
   page.should have_content('There are some overflow from nice page.')
 end
 
+Then /^I should see index first in menu$/ do
+  page.find(:xpath, "//html/body/div/header/nav/ul/li[1]").text.should == "Home page"
+  page.find(:xpath, "//html/body/div/header/nav/ul/li[2]").text.should == "Nice page"
+end

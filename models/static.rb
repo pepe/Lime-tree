@@ -5,11 +5,12 @@ class Static
   key :path, String
   key :body, String
   key :tags, Array
+  key :weight, Integer, default: 0
 
   timestamps!
 
   scope :tagged_with, ->(tag) {where(tags: {:$all => [tag]})}
-  scope :for_menu, where(tags: {:$all => ['in_menu']}).fields(:path, :title).sort(:updated_at.desc)
+  scope :for_menu, where(tags: {:$all => ['in_menu']}).fields(:path, :title).sort(:weight.desc)
 
   def parts
     @parts ||= body ? YAML::load(body) : ''

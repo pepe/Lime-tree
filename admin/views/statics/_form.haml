@@ -22,6 +22,12 @@
   =f.text_field :text_tags, class: :text_field
   %span.description Ex: tags of static separated by ;
 
+.group
+  =f.label :weight
+  =f.error_message_on :weight
+  =f.text_field :weight, class: :text_field
+  %span.description Ex: weight of the static for sorting and ordering purposes
+
 
 .group.navform.wat-cf
   =f.submit pat(:save), class: :button
