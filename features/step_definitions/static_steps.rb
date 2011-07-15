@@ -95,3 +95,13 @@ end
 Then /^I should see its body formated$/ do
   page.should have_xpath("//html/body/div/div/p[2]")
 end
+
+Given /^I created side information page for it$/ do
+  Static.create(title: 'Nice page side info', path: 'nice_side',
+                body: 'There are some overflow from nice page.')
+end
+
+Then /^I should see side information title and body$/ do
+  page.should have_content('There are some overflow from nice page.')
+end
+

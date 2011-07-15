@@ -2,9 +2,8 @@
 
 LimeTree.helpers do
   def get_static(path='')
-    static = Static.where(path: path).first
-    @title = static.title
-    @body = static.body
+    @body = Static.where(path: path).first.body
+    @side = Static.where(path: "#{path}_side").first.try(:body)
   end
 
   def menu_items

@@ -8,15 +8,17 @@
       -
       = @title
     %link(rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="all")
+    %link(rel="stylesheet" href="/stylesheets/custom.css" type="text/css" media="all")
   %body
     #container
       %header
-        %h1=@configuration.title if @configuration
+        %h1=link_to(@configuration.title, '/') if @configuration
         %nav#menu
           %ul=menu_items
 
       #main(role='main')
         =yield
+      .clearfix
 
       %footer
         =@configuration.parts['footer'] if @configuration

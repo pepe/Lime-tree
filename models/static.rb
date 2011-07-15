@@ -9,7 +9,7 @@ class Static
   timestamps!
 
   scope :tagged_with, ->(tag) {where(tags: {:$all => [tag]})}
-  scope :for_menu, where(tags: {:$all => ['in_menu']}).fields(:path, :title)
+  scope :for_menu, where(tags: {:$all => ['in_menu']}).fields(:path, :title).sort(:updated_at.desc)
 
   def parts
     @parts ||= body ? YAML::load(body) : ''
